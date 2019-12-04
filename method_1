@@ -1,0 +1,85 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package playgroundlik;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ *
+ * @author User
+ */
+public class PlayGroundLik
+{
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args)
+    {
+        Queue<String> q = new LinkedList<>();
+
+        q.add("a");
+        q.add("b");
+        q.add("c");
+
+        printQueue(q2(q));
+    }
+
+    public static Queue<Integer> q1(Queue<Integer> q)
+    {
+        Queue<Integer> toReturn = new LinkedList<>();
+        int size = q.size();
+        for (int i = 0; i < size; i++)
+        {
+            toReturn.add(q.peek());
+            toReturn.add(q.poll());
+        }
+
+        return toReturn;
+    }
+
+    public static Queue<String> q2(Queue<String> q)
+    {
+
+        Queue<String> q1 = new LinkedList<>(q);
+        reverseQueue(q);
+        q1.addAll(q);
+        return q1;
+    }
+
+    public static int reverseQueue(Queue<String> q)
+    {
+        if (q.isEmpty())
+        {
+            return 0;
+        }
+        String tmp = q.poll();
+
+        reverseQueue(q);
+
+        q.add(tmp);
+        return 0;
+    }
+
+    public static void printQueueInteger(Queue<Integer> q)
+    {
+        int size = q.size();
+        for (int i = 0; i < size; i++)
+        {
+            System.out.print(q.poll() + ",");
+        }
+    }
+
+    public static void printQueue(Queue<String> q)
+    {
+        int size = q.size();
+        for (int i = 0; i < size; i++)
+        {
+            System.out.print(q.poll() + ",");
+        }
+    }
+}
